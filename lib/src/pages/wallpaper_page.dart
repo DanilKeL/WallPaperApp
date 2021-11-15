@@ -126,7 +126,7 @@ class _WallpaperPage extends StatelessWidget {
                     itemCount: state.photos.length,
                     itemBuilder: (context, index) {
                 return InkWell(
-                    onTap: () => {},
+                    onTap: () => context.read<WallpaperCubit>().loadImage(state.photos[index], context),
                     child: ImageWidget(state.photos[index], context, state)
                 );
                     }
