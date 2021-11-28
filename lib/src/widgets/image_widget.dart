@@ -4,7 +4,7 @@ import '../models/image.dart';
 
 
 
-Widget ImageWidget(ImageClass item, BuildContext context, WallpaperLoadedState state) {
+Widget ImageWidget(ImageClass item, BuildContext context, state) {
   final double height = MediaQuery.of(context).size.height;
   final double width = MediaQuery.of(context).size.width;
   return Card(

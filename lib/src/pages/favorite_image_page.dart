@@ -4,16 +4,16 @@ import 'package:wallpaper/src/models/image.dart';
 import 'package:image_downloader/image_downloader.dart';
 import '../utils/secure_storage.dart';
 
-class ImagePage extends StatelessWidget {
+class FavoriteImagePage extends StatelessWidget {
   final ImageClass image;
-  const ImagePage({Key? key, required this.image}) : super(key: key);
-  
+  const FavoriteImagePage({Key? key, required this.image}) : super(key: key);
 
-  Future <void> setFavorite(String photoID) async{
+
+  Future <void> deleteFavorite(String photoID) async{
     print(photoID);
     String? favoriteIDs = await UserSecureStorage.getFavoriteFromStorage();
     print(favoriteIDs);
-    favoriteIDs = favoriteIDs! + " " + photoID;
+    favoriteIDs = favoriteIDs!.replaceAll(photoID, "");
     UserSecureStorage.setFavoriteInStorage(favoriteIDs);
     print(favoriteIDs);
   }
@@ -47,24 +47,24 @@ class ImagePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-          width: 420,
-          height: 215,
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: NetworkImage(image.imageLandscape)
-              )
+            width: 420,
+            height: 215,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: NetworkImage(image.imageLandscape)
+                )
+            ),
           ),
-        ),
           const SizedBox(height: 10,),
           Row(
             children: [
               const SizedBox(width: 10,),
               Text('Photographer: ${image.photographer}',
 
-              style: const TextStyle (
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              )
+                  style: const TextStyle (
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  )
               ),
             ],
           ),
@@ -91,9 +91,9 @@ class ImagePage extends StatelessWidget {
                 child: const Icon(Icons.get_app),
               ),
               const SizedBox(width: 15,),
-              FloatingActionButton(onPressed: () => setFavorite("${image.photoID}"),
+              FloatingActionButton(onPressed: () => deleteFavorite("${image.photoID}"),
                   heroTag: "Next",
-                child: const Icon(Icons.favorite)),
+                  child: const Icon(Icons.delete)),
             ],
           )
         ],

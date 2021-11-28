@@ -8,6 +8,7 @@ class ImageClass{
   var imageSmall;
   var imagePortrait;
   var imageLandscape;
+  var photoID;
   ImageClass({
     required this.photographer,
     required this.photographerUrl,
@@ -18,6 +19,7 @@ class ImageClass{
     required this.imageSmall,
     required this.imagePortrait,
     required this.imageLandscape,
+    required this.photoID,
   });
 
   factory ImageClass.fromJson(Map<String, dynamic> json) {
@@ -31,6 +33,7 @@ class ImageClass{
       imageSmall: json['src']['small'],
       imagePortrait: json['src']['portrait'],
       imageLandscape: json['src']['landscape'],
+      photoID: json['id'],
     );
   }
 }

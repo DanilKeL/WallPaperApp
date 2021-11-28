@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:wallpaper/src/pages/image_page.dart';
-import 'package:wallpaper/src/pages/main_page.dart';
+import 'package:wallpaper/src/pages/favorite_page.dart';
 import 'image_page.dart';
 import 'wallpaper_page.dart';
 
@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   int pageIndex = 0;
   List<Widget> pageList = <Widget>[
     const WallPaperPage(),
-    const MainPage(),
+    const FavoritePage(),
   ];
   @override
   Widget build(BuildContext context) {
