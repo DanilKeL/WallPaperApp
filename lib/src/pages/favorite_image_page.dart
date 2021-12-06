@@ -42,7 +42,7 @@ class FavoriteImagePage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Настройки',)),
+      appBar: AppBar(title: const Text('Избранное',)),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -51,7 +51,7 @@ class FavoriteImagePage extends StatelessWidget {
             height: 215,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: NetworkImage(image.imageLandscape)
+                    image: NetworkImage(image.imageMedium)
                 )
             ),
           ),
@@ -84,16 +84,81 @@ class FavoriteImagePage extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 20,),
-          Row(
+          Column(
             children: [
-              const SizedBox(width: 10,),
-              FloatingActionButton(onPressed: () => downloadImage(image.imageOriginal),
-                child: const Icon(Icons.get_app),
+              Row(
+                  children: [
+                    const SizedBox(width: 8,),
+                    FloatingActionButton(onPressed: () => deleteFavorite("${image.photoID}"),
+                        heroTag: "Next",
+                        child: const Icon(Icons.delete)),
+                    const SizedBox(width: 15,),
+                    const Text("Delete from favorite", style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),)
+                  ]
               ),
-              const SizedBox(width: 15,),
-              FloatingActionButton(onPressed: () => deleteFavorite("${image.photoID}"),
-                  heroTag: "Next",
-                  child: const Icon(Icons.delete)),
+
+              const SizedBox(height: 5,),
+
+              Row(
+                  children: [
+                    const SizedBox(width: 8,),
+                    FloatingActionButton(onPressed: () => downloadImage(image.imageOriginal),
+                        child: const Icon(Icons.get_app)),
+                    const SizedBox(width: 15,),
+                    const Text("Download original image", style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),)
+                  ]
+              ),
+
+              const SizedBox(height: 5,),
+
+              Row(
+                  children: [
+                    const SizedBox(width: 8,),
+                    FloatingActionButton(onPressed: () => downloadImage(image.imageMedium),
+                        child: const Icon(Icons.get_app)),
+                    const SizedBox(width: 15,),
+                    const Text("Download medium image", style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),)
+                  ]
+              ),
+
+              const SizedBox(height: 5,),
+
+              Row(
+                  children: [
+                    const SizedBox(width: 8,),
+                    FloatingActionButton(onPressed: () => downloadImage(image.imagePortrait),
+                        child: const Icon(Icons.get_app)),
+                    const SizedBox(width: 15,),
+                    const Text("Download portrait image", style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),)
+                  ]
+              ),
+
+              const SizedBox(height: 5,),
+
+              Row(
+                  children: [
+                    const SizedBox(width: 8,),
+                    FloatingActionButton(onPressed: () => downloadImage(image.imageLandscape),
+                        child: const Icon(Icons.get_app)),
+                    const SizedBox(width: 15,),
+                    const Text("Download landscape image", style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),)
+                  ]
+              ),
             ],
           )
         ],

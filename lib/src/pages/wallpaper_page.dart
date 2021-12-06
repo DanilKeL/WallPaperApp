@@ -25,6 +25,7 @@ class _WallpaperPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<WallpaperCubit, WallpaperState>(builder: (context, state){
       if (state is WallpaperInitial) {
+        context.read<WallpaperCubit>().reUserSecure();
         return Scaffold(
           appBar: AppBar(title: Text('Изображения'),),
           body: Container(

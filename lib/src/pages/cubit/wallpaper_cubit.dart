@@ -4,6 +4,7 @@ import 'package:meta/meta.dart';
 import 'package:wallpaper/src/models/image.dart';
 import '../../requests/requests.dart';
 import '../image_page.dart';
+import "../../utils/secure_storage.dart";
 part 'wallpaper_state.dart';
 
 
@@ -33,5 +34,12 @@ class WallpaperCubit extends Cubit<WallpaperState> {
 
   Future<void> reloadWallpaper() async {
     emit(WallpaperInitial());
+  }
+
+  Future<void> reUserSecure() async {
+    String? favorite = await UserSecureStorage.getFavoriteFromStorage();
+    if (favorite == null){
+      UserSecureStorage.setFavoriteInStorage("");
+    }
   }
 }

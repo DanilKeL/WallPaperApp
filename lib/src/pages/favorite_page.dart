@@ -26,7 +26,7 @@ class _FavoritePage extends StatelessWidget {
         context.read<FavoritesCubit>().getFavorites();
         context.read<FavoritesCubit>().loadFavorites();
         return Scaffold(
-          appBar: AppBar(title: Text('Изображения'),),
+          appBar: AppBar(title: Text('Избранное'),),
           body: Container(
               child: Column(
                   children: const [
@@ -39,7 +39,7 @@ class _FavoritePage extends StatelessWidget {
       if (state is FavoritesLoadedState) {
         print(state.photos);
         return Scaffold(
-          appBar: AppBar(title: Text('Изображения'),),
+          appBar: AppBar(title: Text('Избранное'),),
           body: SingleChildScrollView(
             child: Column(
               children: [
